@@ -19,4 +19,7 @@ pipeline-stage-view:latest
 ssh-slaves:latest
 timestamper:latest
 workflow-aggregator:latest
+workflow-cps:latest
+workflow-job:latest
+workflow-multibranch:latest
 ws-cleanup:latest
