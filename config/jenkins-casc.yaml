@@ -18,4 +18,14 @@ security:
 unclassified:
   location:
     url: http://localhost:8080/
+jobs:
+  - script: |
+      multibranchPipelineJob('jenkins-seed-jobs') {
+           branchSources {
+               git {
+                   id = 'jenkins-jobs'
+                   remote('https://github.com/lsmarsden/jenkins-jobs.git')
+               }
+           }
+       }
 
