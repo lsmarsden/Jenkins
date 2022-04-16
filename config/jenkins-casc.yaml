@@ -18,14 +18,25 @@ security:
 unclassified:
   location:
     url: http://localhost:8080/
+    #changing file to trigger cache invaildation
 jobs:
+  # Initial Jenkins seed job - will be overwritten with the job of the same name in
+  # the Github repo once run. If this job is not present in the repo and removeAction
+  # is 'DELETE', then the job will abort automatically as it will try to delete itself.
   - script: |
-      multibranchPipelineJob('jenkins-seed-jobs') {
-           branchSources {
-               git {
-                   id = 'jenkins-jobs'
-                   remote('https://github.com/lsmarsden/jenkins-jobs.git')
-               }
-           }
-       }
-
+      job('jenkins-seed-jobs') {
+          scm {
+              git {
+                  remote {
+                      github('lsmarsden/jenkins-jobs')
+                  }
+              }
+          }
+          steps {
+              dsl {
+                  external('jobs/*.groovy')
+      
+                  removeAction('DELETE')
+              }
+          }
+      }

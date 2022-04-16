@@ -8,6 +8,6 @@ then
   exit 0
 fi
 
-docker run --rm -p 8080:8080 -v jenkins_home:/var/jenkins_home --name jenkins \
+docker run --rm -p 8080:8080 -v /var/jenkins_home --name jenkins \
   --env JENKINS_ADMIN_ID="${JENKINS_ADMIN_ID}" --env JENKINS_ADMIN_PASSWORD="${JENKINS_ADMIN_PASSWORD}" \
   jenkins:jenkins-local
