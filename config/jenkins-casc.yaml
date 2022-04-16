@@ -18,7 +18,6 @@ security:
 unclassified:
   location:
     url: http://localhost:8080/
-    #changing file to trigger cache invaildation
 jobs:
   # Initial Jenkins seed job - will be overwritten with the job of the same name in
   # the Github repo once run. If this job is not present in the repo and removeAction
