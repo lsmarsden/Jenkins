@@ -1,3 +1,4 @@
+# See http://localhost:8080/configuration-as-code/reference for full list of options
 jenkins:
   securityRealm:
     local:
@@ -11,6 +12,9 @@ jenkins:
         - "USER:Overall/Administer:admin"
         - "GROUP:Overall/Read:authenticated"
 security:
+  scriptApproval:
+    approvedSignatures:
+
   queueItemAuthenticator:
     authenticators:
       - global:
@@ -23,7 +27,10 @@ jobs:
   # the Github repo once run. If this job is not present in the repo and removeAction
   # is 'DELETE', then the job will abort automatically as it will try to delete itself.
   - script: |
-      job('jenkins-seed-jobs') {
+      job('jenkins_seed_jobs') {
+          triggers {
+              cron('* * * * *')
+          }
           scm {
               git {
                   remote {
