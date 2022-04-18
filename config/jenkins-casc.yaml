@@ -6,19 +6,30 @@ jenkins:
       users:
         - id: ${JENKINS_ADMIN_ID}
           password: ${JENKINS_ADMIN_PASSWORD}
+        - description: The default Jenkins user.
+          id: ${JENKINS_USER_ID}
+          password: ${JENKINS_USER_PASSWORD}
   authorizationStrategy:
     globalMatrix:
       permissions:
-        - "USER:Overall/Administer:admin"
+        - "USER:Overall/Administer:${JENKINS_ADMIN_ID}"
+        - "USER:Overall/Administer:${JENKINS_USER_ID}"
         - "GROUP:Overall/Read:authenticated"
 security:
   scriptApproval:
     approvedSignatures:
 
   queueItemAuthenticator:
+    # Run jobs as the triggering user. If no triggering user (e.g. started by timer), then
+    # run as Jenkins user with run permissions.
     authenticators:
       - global:
           strategy: triggeringUsersAuthorizationStrategy
+      - global:
+          strategy:
+            specificUsersAuthorizationStrategy:
+              userid: ${JENKINS_USER_ID}
+              password: ${JENKINS_USER_PASSWORD}
 unclassified:
   location:
     url: http://localhost:8080/
@@ -35,6 +46,9 @@ jobs:
               git {
                   remote {
                       github('lsmarsden/jenkins-jobs')
+                  }
+                  extensions {
+                      cleanBeforeCheckout()
                   }
               }
           }

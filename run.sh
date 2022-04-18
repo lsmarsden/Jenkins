@@ -10,4 +10,5 @@ fi
 
 docker run --rm -p 8080:8080 -v /var/jenkins_home --name jenkins \
   --env JENKINS_ADMIN_ID="${JENKINS_ADMIN_ID}" --env JENKINS_ADMIN_PASSWORD="${JENKINS_ADMIN_PASSWORD}" \
+  --env JENKINS_USER_ID="${JENKINS_USER_ID}" --env JENKINS_USER_PASSWORD="${JENKINS_USER_PASSWORD}" \
   jenkins:jenkins-local
