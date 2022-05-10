@@ -35,7 +35,7 @@ unclassified:
     url: http://localhost:8080/
 jobs:
   # Initial Jenkins seed job - will be overwritten with the job of the same name in
-  # the Github repo once run. If this job is not present in the repo and removeAction
+  # the Github jenkins-jobs repo once run. If this job is not present in the repo and removeAction
   # is 'DELETE', then the job will abort automatically as it will try to delete itself.
   - script: |
       job('jenkins_seed_jobs') {
