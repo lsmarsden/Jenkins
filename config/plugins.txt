@@ -16,6 +16,7 @@ mailer:latest
 matrix-auth:latest
 pam-auth:latest
 pipeline-github-lib:latest
+pipeline-maven:latest
 pipeline-stage-view:latest
 script-security:latest
 ssh-slaves:latest
