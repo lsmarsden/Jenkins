@@ -32,7 +32,7 @@ security:
               password: ${JENKINS_USER_PASSWORD}
 unclassified:
   location:
-    url: http://localhost:8080/
+    url: http://localhost:9000/
 jobs:
   # Initial Jenkins seed job - will be overwritten with the job of the same name in
   # the Github jenkins-jobs repo once run. If this job is not present in the repo and removeAction
@@ -45,7 +45,7 @@ jobs:
           scm {
               git {
                   remote {
-                      github('lsmarsden/jenkins-jobs')
+                      github('lsmarsden/${JENKINS_JOBS_REPO}')
                   }
                   extensions {
                       cleanBeforeCheckout()

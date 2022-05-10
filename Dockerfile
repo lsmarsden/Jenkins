@@ -11,5 +11,5 @@ RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 
 COPY config/jenkins-casc.yaml /var/jenkins_home/jenkins-casc.yaml
 
-EXPOSE 8080
+EXPOSE 9000
 EXPOSE 50000
