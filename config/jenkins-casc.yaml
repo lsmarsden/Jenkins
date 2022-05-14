@@ -1,4 +1,4 @@
-# See http://localhost:8080/configuration-as-code/reference for full list of options
+# See http://localhost:9000/configuration-as-code/reference for full list of options
 jenkins:
   securityRealm:
     local:
@@ -30,6 +30,17 @@ security:
             specificUsersAuthorizationStrategy:
               userid: ${JENKINS_USER_ID}
               password: ${JENKINS_USER_PASSWORD}
+
+tool:
+  maven:
+    installations:
+    - name: "maven"
+      properties:
+        - installSource:
+            installers:
+            - maven:
+                id: "${MAVEN_VERSION}"
+
 unclassified:
   location:
     url: http://localhost:9000/
