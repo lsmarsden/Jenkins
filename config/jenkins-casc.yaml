@@ -32,6 +32,11 @@ security:
               password: ${JENKINS_USER_PASSWORD}
 
 tool:
+  jdk:
+    installations:
+      - name: "jdk-17"
+        home: ${JAVA_HOME}
+
   maven:
     installations:
     - name: "maven"

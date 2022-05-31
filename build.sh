@@ -9,4 +9,5 @@ else
 fi
 
 echo "Buiding image using architecture platform $arch"
+# Assuming JAVA_HOME will be set to JDK 17 at the moment
 docker build -t jenkins:jenkins-local --build-arg arch="$arch" .
